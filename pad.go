@@ -3,7 +3,7 @@ package False_Sharing
 import "sync/atomic"
 
 type MyAtomic interface {
-	IncreaseAllEles()
+	Increase()
 }
 
 type NoPad struct {
@@ -12,7 +12,7 @@ type NoPad struct {
 	c uint64
 }
 
-func (atm *NoPad) IncreaseAllEles() {
+func (atm *NoPad) Increase() {
 	atomic.AddUint64(&atm.a,1)
 	atomic.AddUint64(&atm.b,1)
 	atomic.AddUint64(&atm.c,1)
@@ -29,7 +29,7 @@ type Pad struct {
 	_p3 [8]uint64
 }
 
-func (atm *Pad) IncreaseAllEles() {
+func (atm *Pad) Increase() {
 	atomic.AddUint64(&atm.a,1)
 	atomic.AddUint64(&atm.b,1)
 	atomic.AddUint64(&atm.c,1)

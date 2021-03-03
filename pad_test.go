@@ -13,7 +13,7 @@ func testAtomicIncrease(atm MyAtomic) {
 	for i := 0; i < paraNum; i++ {
 		go func() {
 			for j := 0; j < addTimes; j++ {
-				atm.IncreaseAllEles()
+				atm.Increase()
 			}
 			wg.Done()
 		}()
